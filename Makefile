@@ -13,10 +13,9 @@ SRC = main.c \
 	  mx_file_size.c \
 	  mx_err_handling.c \
 	  mx_printerr.c \
-	  mx_print_invalid_line.c \
 	  mx_atoi.c \
 	  mx_check_line.c \
-
+	  
 SRCS = $(addprefix src/, $(SRC))
 
 OBJ = $(SRC:%.c=%.o)
