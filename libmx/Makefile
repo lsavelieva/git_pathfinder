@@ -16,6 +16,8 @@ SRC = src/mx_binary_search.c \
       src/mx_get_char_index.c \
       src/mx_get_substr_index.c \
       src/mx_hex_to_nbr.c \
+      src/mx_isalpha.c \
+      src/mx_isdigit.c \
       src/mx_isspace.c \
       src/mx_itoa.c \
       src/mx_list_size.c \
@@ -75,6 +77,8 @@ OBJ = mx_binary_search.o \
       mx_get_char_index.o \
       mx_get_substr_index.o \
       mx_hex_to_nbr.o \
+      mx_isalpha.o \
+      mx_isdigit.o \
       mx_isspace.o \
       mx_itoa.o \
       mx_list_size.o \

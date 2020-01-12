@@ -14,7 +14,6 @@
 //Error function
 void mx_printerr(const char *s);
 int mx_err_handling(const char *file);
-void mx_print_invalid_line(int number);
 
 //Basic functions
 int mx_file_size(const char *file);
