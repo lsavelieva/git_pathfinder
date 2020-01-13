@@ -15,7 +15,8 @@ SRC = main.c \
 	  mx_printerr.c \
 	  mx_atoi.c \
 	  mx_check_line.c \
-	  mx_matrix_adjacency
+	  mx_matrix_adjacency.c \
+	  mx_check_unic_island.c
 
 SRCS = $(addprefix src/, $(SRC))
 
