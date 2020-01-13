@@ -15,7 +15,8 @@ SRC = main.c \
 	  mx_printerr.c \
 	  mx_atoi.c \
 	  mx_check_line.c \
-	  
+	  mx_matrix_adjacency
+
 SRCS = $(addprefix src/, $(SRC))
 
 OBJ = $(SRC:%.c=%.o)
