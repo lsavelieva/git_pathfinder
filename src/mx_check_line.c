@@ -1,7 +1,6 @@
 #include "../inc/pathfinder.h"
 
 static int check_digit(const char *s, int n) {
-    // int n = mx_get_char_index(s, '\n');
     char *f_line = mx_strnew(n);
     int res = 0;
 
@@ -19,28 +18,33 @@ static void error_invalid_line(int line) {
     mx_printerr(" is not valid\n");
     exit (-1);
 }
+
+static char *cycle(char *s, int line_nbr, char c) {
+    while (*s != c) {  mx_printchar(*s);
+        if (!(mx_isalpha(*s)))
+            error_invalid_line(line_nbr);
+        s++;
+    }
+    //s++;
+    return s;
+}
+
 static void check_next(char *s, int line_nbr) {
     int n = mx_get_char_index(s, '\n');
     int digit = 0;
 
-    s = s + n + 1; //printf("%s\n", s);
+    s = s + n + 1; printf("%s\n", s);
     line_nbr += 1;
     while (*s != '\0') {
-        while (*s != 45) { mx_printchar(*s);
-            if (!(mx_isalpha(*s)))
-                error_invalid_line(line_nbr);
-            s++;
-        }
-        s++;
-        while (*s != 44) { mx_printchar(*s);
-            if (!(mx_isalpha(*s)))
-                error_invalid_line(line_nbr);
-            s++;
-        }
-        s++;
-        while (*s != '\n') { mx_printchar(*s);
+        if (mx_get_char_index(s, 45) == 0
+            || mx_get_char_index(s, 44) - mx_get_char_index(s, 45) == 1
+            || mx_get_char_index(s, 10) - mx_get_char_index(s, 44) == 1)
+            error_invalid_line(line_nbr);
+        s = cycle(s, line_nbr, '-') + 1;
+        s = cycle(s, line_nbr, ',') + 1;
+        while (*s != '\n') {   mx_printchar(*s);
             digit = mx_atoi(s);
-            if (digit <= 0)
+            if (digit < 0 || (!(mx_isdigit((int)(*s)))))
                 error_invalid_line(line_nbr);
             s++;
         }
@@ -48,34 +52,24 @@ static void check_next(char *s, int line_nbr) {
         line_nbr += 1;
     }
     printf("%d\n", line_nbr);
-    mx_printstr("\x1b[33mRESULT OF MX_CHECK_NEXT\033[0m \n");
-
-
+    mx_printstr("\x1b[33mRESULT OF MX_CHECK_LINE\033[0m \n");
 }
 
-// static void check_for_island(char *name, int line_nbr) {
-//     while (*name != '\0') {
-//         if (mx_isalpha(*name) == false) {
-//             mx_print_invalid_line(line_nbr);
-//         }
-//     }
-// }
-
 int mx_check_line(const char *file) {
-    char *content;
+    char *str;
     int fl;
     int line_nbr = 1;
     int n;
 
-    content = mx_file_to_str(file);
-    n = mx_get_char_index(content, '\n');
-    fl = check_digit(content, n);
+    str = mx_file_to_str(file);
+    n = mx_get_char_index(str, '\n');
+    fl = check_digit(str, n);
     if (fl == 0 || fl < 0) {
         mx_printstr("\x1b[33mRESULT OF MX_CHECK_FIRST\033[0m \n");
         error_invalid_line(line_nbr);
     }
-    check_next(content, line_nbr);
-    free(content);
+    check_next(str, line_nbr);
+    free(str);
     mx_printstr("\x1b[32mOK FOR MX_CHECK_LINE\033[0m \n");
     return 0;
 }
