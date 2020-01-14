@@ -14,10 +14,14 @@
 //Error function
 void mx_printerr(const char *s);
 int mx_err_handling(const char *file);
+int mx_check_line(const char *file);
+int mx_check_unique_island(const char *file);
 
-//Basic functions
+//Additional functions
 int mx_file_size(const char *file);
 int mx_atoi(const char *str);
-int mx_check_line(const char *file);
+int mx_check_digit(const char *s, int n);
+
+//Basic functions
 
 #endif

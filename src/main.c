@@ -10,7 +10,8 @@ int main(int argc, char **argv) {
     if (mx_err_handling(argv[1]) < 0)
         return 0;
     mx_check_line(argv[1]);
-    mx_printstr("i am here\n");
+    mx_printstr("=== i am valid :) ===\n");
+    mx_check_unique_island(argv[1]);
 
 
     system("leaks -q pathfinder");

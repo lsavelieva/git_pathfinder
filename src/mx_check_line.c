@@ -1,16 +1,16 @@
 #include "../inc/pathfinder.h"
 
-static int check_digit(const char *s, int n) {
-    char *f_line = mx_strnew(n);
-    int res = 0;
+// static int check_digit(const char *s, int n) {
+//     char *f_line = mx_strnew(n);
+//     int res = 0;
 
-    f_line = mx_strncpy(f_line, s, n);
-    res = mx_atoi(f_line);
-    if (res >= 0)
-        mx_printstr("\x1b[32mOK FOR CHECK_DIGIT\033[0m \n");
-    free(f_line);
-    return res;
-}
+//     f_line = mx_strncpy(f_line, s, n);
+//     res = mx_atoi(f_line);
+//     if (res >= 0)
+//         mx_printstr("\x1b[32mOK FOR CHECK_DIGIT\033[0m \n");
+//     free(f_line);
+//     return res;
+// }
 
 static void error_invalid_line(int line) {
     mx_printerr("error: line ");
@@ -63,7 +63,8 @@ int mx_check_line(const char *file) {
 
     str = mx_file_to_str(file);
     n = mx_get_char_index(str, '\n');
-    fl = check_digit(str, n);
+    // fl = check_digit(str, n);
+    fl = mx_check_digit(str, n);
     if (fl == 0 || fl < 0) {
         mx_printstr("\x1b[33mRESULT OF MX_CHECK_FIRST\033[0m \n");
         error_invalid_line(line_nbr);
