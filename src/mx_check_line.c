@@ -12,17 +12,17 @@
 //     return res;
 // }
 
-static void error_invalid_line(int line) {
-    mx_printerr("error: line ");
-    mx_printerr(mx_itoa(line));
-    mx_printerr(" is not valid\n");
-    exit (-1);
-}
+// static void error_invalid_line(int line) {
+//     mx_printerr("error: line ");
+//     mx_printerr(mx_itoa(line));
+//     mx_printerr(" is not valid\n");
+//     exit (-1);
+// }
 
 static char *cycle(char *s, int line_nbr, char c) {
-    while (*s != c) {  mx_printchar(*s);
+    while (*s != c) {  //mx_printchar(*s);
         if (!(mx_isalpha(*s)))
-            error_invalid_line(line_nbr);
+            mx_error_invalid_line(line_nbr);
         s++;
     }
     //s++;
@@ -33,25 +33,25 @@ static void check_next(char *s, int line_nbr) {
     int n = mx_get_char_index(s, '\n');
     int digit = 0;
 
-    s = s + n + 1; printf("%s\n", s);
+    s = s + n + 1; //printf("%s\n", s);
     line_nbr += 1;
     while (*s != '\0') {
         if (mx_get_char_index(s, 45) == 0
             || mx_get_char_index(s, 44) - mx_get_char_index(s, 45) == 1
             || mx_get_char_index(s, 10) - mx_get_char_index(s, 44) == 1)
-            error_invalid_line(line_nbr);
+            mx_error_invalid_line(line_nbr);
         s = cycle(s, line_nbr, '-') + 1;
         s = cycle(s, line_nbr, ',') + 1;
-        while (*s != '\n') {   mx_printchar(*s);
+        while (*s != '\n') {   //x_printchar(*s);
             digit = mx_atoi(s);
             if (digit < 0 || (!(mx_isdigit((int)(*s)))))
-                error_invalid_line(line_nbr);
+                mx_error_invalid_line(line_nbr);
             s++;
         }
         s++;
         line_nbr += 1;
     }
-    printf("%d\n", line_nbr);
+    // printf("%d\n", line_nbr);
     mx_printstr("\x1b[33mRESULT OF MX_CHECK_LINE\033[0m \n");
 }
 
@@ -64,10 +64,10 @@ int mx_check_line(const char *file) {
     str = mx_file_to_str(file);
     n = mx_get_char_index(str, '\n');
     // fl = check_digit(str, n);
-    fl = mx_check_digit(str, n);
+    fl = mx_check_digit(str, n, line_nbr);
     if (fl == 0 || fl < 0) {
         mx_printstr("\x1b[33mRESULT OF MX_CHECK_FIRST\033[0m \n");
-        error_invalid_line(line_nbr);
+        mx_error_invalid_line(line_nbr);
     }
     check_next(str, line_nbr);
     free(str);

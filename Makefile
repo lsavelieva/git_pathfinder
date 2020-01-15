@@ -12,6 +12,7 @@ LIBA := $(LIB)/libmx.a
 SRC = main.c \
 	  mx_file_size.c \
 	  mx_err_handling.c \
+	  mx_error_invalid_line.c \
 	  mx_printerr.c \
 	  mx_atoi.c \
 	  mx_check_line.c \
