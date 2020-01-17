@@ -14,6 +14,6 @@ int mx_get_arr_size(char **arr) {
     int i;
 
     for (i = 0; arr[i] != NULL; i++)
-        ; printf("%d\n", i);
+        ;
     return i;
 }

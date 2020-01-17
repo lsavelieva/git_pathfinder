@@ -14,9 +14,10 @@ int main(int argc, char **argv) {
     mx_printstr("=== i am valid :) ===\n=== go to check_unique_island! ===\n");
     // mx_check_unique_island(argv[1]);
     arr = mx_get_strarr(argv[1]);
-    
-    for (int i = 0; arr[i] != NULL; i++)
-        mx_split(arr[i]);
+
+    // int f = mx_get_arr_size(arr); printf("%d\n", f);
+    char **temp = mx_pf_split(arr, '-', ',');
+    mx_print_strarr(temp, "\t");
 
 // mx_printint(size);mx_printchar('\n');
 
