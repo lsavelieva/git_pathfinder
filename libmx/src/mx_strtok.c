@@ -14,7 +14,7 @@ char *mx_strtok(char *s, const char *delim) {
 
     if (s)
         fin = s;
-    if ((fin == NULL) || (*fin == 0))
+    if (!fin || !(*fin))
         return NULL;
     pos = fin;
     check(delim, pos);
@@ -29,4 +29,3 @@ char *mx_strtok(char *s, const char *delim) {
     fin = pos + 1;
     return start;
 }
-
