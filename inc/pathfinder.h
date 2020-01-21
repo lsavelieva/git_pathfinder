@@ -22,13 +22,15 @@ int mx_check_line(const char *file);
 int mx_file_size(const char *file);
 int mx_atoi(const char *str);
 int mx_check_digit(const char *s, int n, int line_nbr);
-char **mx_get_strarr(const char *file);
 int mx_get_arr_size(char **arr);
 int mx_pf_count_word(char *s, const char *delim);
+int get_index(char *s, char c1, char c2);
 
-char **mx_pf_split(char *s);//, const char *delim);
+// char **mx_pf_split(char *s);//, const char *delim);
+char **mx_matrix_split(char **arr, int count);
 
 
 //Basic functions
+char **mx_get_strarr(const char *file);
 
 #endif

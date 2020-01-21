@@ -1,40 +1,21 @@
 #include "../inc/pathfinder.h"
 
-static char *take_word(char *pl, char c){
-    int pp = 0;
-    char *word = NULL;
+//индексы проверить!! иначе не будет сравнения в массиве между элементами
 
-    pp = mx_get_char_index(pl, c);
-    word = (char*)malloc(pp * sizeof(char));
-    word = mx_strndup(pl, pp);
-    return word;
-}
+char **mx_arr_of_isl(char **arr, int count){
+    char **isl_arr = malloc(sizeof(char*) * ((count - 1) * 2 + 1));
 
-static char **arr_of_all(const char *s, char **arr){
-    // char **arr = (char**)malloc((size + 1) * sizeof(char*));
-    char *line = NULL;//line of file
-    int n;//pointer on the end of line
-    int i = 0;
-
-    while (*s != '\0'){
-        n = mx_get_char_index(s, '\n');
-        line = take_word((char*)s, '\n');//mx_strndup(s, n);
-        if (line) {
-            arr[i] = take_word(line, '-');
-            line = line + mx_get_char_index(line, '-') + 1;
-            i += 1;
-            arr[i] = take_word(line, ',');
-            line = line + mx_get_char_index(line, ',') + 1;
-            i += 1;
-            arr[i] = take_word(line, '\0');
-            i += 1;
-        }
-        s = s + n + 1;
+    isl_arr[0] = arr[0];
+    for (int i = 0, j = 0; i < (count * 3); i++) {
+        if (mx_atoi(arr[i]) < 0)
+            if (mx_strcmp(isl_arr[j], arr[i]) != 0)
+                isl_arr[j] = arr[i];
     }
-    arr[i] = NULL;
-    return arr;
+    isl_arr[(count - 1) * 2] = NULL;
+    return isl_arr;
 }
 
+/* function to check number of unique islands */
 //  void sum_of_isl(char **arr, int sum){
 //     int count = 0; //value of unique islands in file
 //     int k;
@@ -56,20 +37,20 @@ static char **arr_of_all(const char *s, char **arr){
 //         }
 // }
 
-void mx_check_unique_island(const char *file) {
-    char *s = mx_file_to_str(file);
-//     int sum = mx_check_digit(s, mx_get_char_index(s, '\n'), 1); //value of 1st line
-    // char **arr_i = NULL;// array of islands
-    int size = mx_count_words(s, '\n'); printf("size --> %d\n", size);
-char **arr_i = (char**)malloc((size + 1) * sizeof(char*));
+// void mx_check_unique_island(const char *file) {
+//     char *s = mx_file_to_str(file);
+// //     int sum = mx_check_digit(s, mx_get_char_index(s, '\n'), 1); //value of 1st line
+//     // char **arr_i = NULL;// array of islands
+//     int size = mx_count_words(s, '\n'); printf("size --> %d\n", size);
+// char **arr_i = (char**)malloc((size + 1) * sizeof(char*));
 
-    s = s + mx_get_char_index(s, '\n') + 1; mx_printstr("arr_of_unique?\n");
-    arr_of_all(s,  arr_i);
-    mx_print_strarr(arr_i, " > ");
-    // sum_of_isl(arr_i, sum);
+//     s = s + mx_get_char_index(s, '\n') + 1; mx_printstr("arr_of_unique?\n");
+//     arr_of_all(s,  arr_i);
+//     mx_print_strarr(arr_i, " > ");
+//     // sum_of_isl(arr_i, sum);
 
 
 
-    mx_printstr("\x1b[32mOK FOR CHECK_UNIQUE_ISLANDS\033[0m \n");
+//     mx_printstr("\x1b[32mOK FOR CHECK_UNIQUE_ISLANDS\033[0m \n");
 
-}
+// }

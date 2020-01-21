@@ -29,9 +29,21 @@ static char *cycle(char *s, int line_nbr, char c) {
     return s;
 }
 
+static char *d_cycle(char *s, int line_nbr) {
+    int digit = 0;
+
+    while (*s != '\n') {   //x_printchar(*s);
+        digit = mx_atoi(s);
+        if (digit < 0 || (!(mx_isdigit((int)(*s)))))
+            mx_error_invalid_line(line_nbr);
+        s++;
+    }
+    return s;
+}
+
 static void check_next(char *s, int line_nbr) {
     int n = mx_get_char_index(s, '\n');
-    int digit = 0;
+    // int digit = 0;
 
     s = s + n + 1; //printf("%s\n", s);
     line_nbr += 1;
@@ -42,12 +54,13 @@ static void check_next(char *s, int line_nbr) {
             mx_error_invalid_line(line_nbr);
         s = cycle(s, line_nbr, '-') + 1;
         s = cycle(s, line_nbr, ',') + 1;
-        while (*s != '\n') {   //x_printchar(*s);
-            digit = mx_atoi(s);
-            if (digit < 0 || (!(mx_isdigit((int)(*s)))))
-                mx_error_invalid_line(line_nbr);
-            s++;
-        }
+        // while (*s != '\n') {   //x_printchar(*s);
+        //     digit = mx_atoi(s);
+        //     if (digit < 0 || (!(mx_isdigit((int)(*s)))))
+        //         mx_error_invalid_line(line_nbr);
+        //     s++;
+        // }
+        s = d_cycle(s, line_nbr) + 1;
         s++;
         line_nbr += 1;
     }
@@ -60,8 +73,10 @@ int mx_check_line(const char *file) {
     int fl;
     int line_nbr = 1;
     int n;
+    int end;
 
     str = mx_file_to_str(file);
+    end = mx_strlen(str);
     n = mx_get_char_index(str, '\n');
     // fl = check_digit(str, n);
     fl = mx_check_digit(str, n, line_nbr);
@@ -70,6 +85,8 @@ int mx_check_line(const char *file) {
         mx_error_invalid_line(line_nbr);
     }
     check_next(str, line_nbr);
+    if ((str[end] == '\0') && (str[end - 1] != '\n'))
+        mx_error_invalid_line(line_nbr);
     free(str);
     mx_printstr("\x1b[32mOK FOR MX_CHECK_LINE\033[0m \n");
     return 0;
