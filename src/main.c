@@ -12,7 +12,7 @@ int main(int argc, char **argv) {
     mx_check_line(argv[1]);
     mx_printstr("=== i am valid :) ===\n=== go to check_unique_island! ===\n");
     arr = mx_get_strarr(argv[1]);
-    mx_print_strarr(arr, " >>> ");
+    // mx_print_strarr(arr, " >>> ");
     // int f = mx_get_arr_size(arr); printf("%d\n", f);
 
     // char s[20] = "Greenland-Bananal,8";
