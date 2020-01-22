@@ -28,7 +28,7 @@ int get_index(char *s, char c1, char c2);
 
 // char **mx_pf_split(char *s);//, const char *delim);
 char **mx_matrix_split(char **arr, int count);
-
+char **mx_arr_of_isl(char **arr, int count, int isl_count);
 
 //Basic functions
 char **mx_get_strarr(const char *file);
