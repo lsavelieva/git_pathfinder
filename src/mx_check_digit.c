@@ -18,3 +18,14 @@ int mx_check_digit(const char *s, int n, int line_nbr) {
     free(f_line);
     return res;
 }
+
+/* function that check string on any digit */
+// bool str_isdigit(char *c) {
+//     while (*c != '\0') {
+//         if (*c >= 48 && *c <= 57) {
+//             return true;
+//         }
+//         c++;
+//     }
+//     return false;
+// }

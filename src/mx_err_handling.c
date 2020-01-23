@@ -23,3 +23,19 @@ int mx_err_handling(const char *file) {
         return -1;
     return 0;
 }
+
+void mx_printerr(const char *s) {
+    write(2, s, mx_strlen(s));
+}
+
+void mx_error_invalid_line(int line) {
+    mx_printerr("error: line ");
+    mx_printerr(mx_itoa(line));
+    mx_printerr(" is not valid\n");
+    exit (-1);
+}
+
+void mx_error_invalid_number(){
+    mx_printerr("error: invalid number of islands\n");
+    exit(-1);
+}
