@@ -23,17 +23,14 @@ char **mx_arr_of_isl(char **arr, int count, int isl_count){
  static void sum_of_isl(char **arr, int isl_count){
     int count = 0; //real value of unique islands in file
     char *ptr = NULL;
-    int k;
-    int j;
 
     while (arr[++count]);
-    for (j = 0; j < count; j++) {
-        for (k = j + 1; k < count; k++){
+    for (int j = 0; j < count; j++) {
+        for (int k = j + 1; k < count; k++){
             if (mx_strcmp(arr[j], arr[k]) == 0) {
                 ptr = arr[k];
-                for (int r = k; r < count; r++) {
+                for (int r = k; r < count; r++)
                     arr[r] = arr[r + 1];
-                }
                 mx_strdel(&ptr);
                 --count;
                 k--;
