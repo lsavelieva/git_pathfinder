@@ -21,22 +21,23 @@ char **mx_matrix_split(char **arr, int count){
     return res;
 }
 
-/* function for move file in matrix */
+/* function for move file in array of data */
 char **mx_get_strarr(const char *file) {
     char *s = mx_file_to_str(file);
     char **tmp;
     char **arr;
-    // int count;
     int isl_count;
+    char **arr_uniq;
+    // int count;
 
-    // s = s + mx_get_char_index(s, '\n') + 1;//cut 1 line
     tmp = mx_strsplit(s, '\n');//get array of string
     // count = mx_get_arr_size(tmp);//get N of the strings
     isl_count = mx_atoi(tmp[0]);//get M of the unique islands
     arr = mx_matrix_split(tmp, mx_get_arr_size(tmp));//count);//get unique elements
-    char **arr2 = mx_arr_of_isl(arr, mx_get_arr_size(tmp), isl_count);//count);
 
-    mx_print_strarr(arr2, " : ");
+    arr_uniq = mx_arr_of_isl(arr, mx_get_arr_size(tmp), isl_count);
+    mx_print_strarr(arr_uniq, " >>> ");
+
     mx_strdel(tmp);//del array of string
     return arr;
 }
