@@ -1,9 +1,5 @@
 #include "../inc/pathfinder.h"
 
-// int mx_get_arr_size(char **arr);
-// char **mx_get_strarr(char *file);
-// char **mx_matrix_split(char **arr, int count);
-
 /* function for split file as matrix */
 char **mx_matrix_split(char **arr, int count){
     char **res = malloc(sizeof(char*) * ((count - 1) * 3 + 1));
@@ -38,11 +34,11 @@ char **mx_get_strarr(char *s, int isl_count) {
     arr_uniq = mx_arr_of_isl(arr, arr_size, isl_count);
     mx_print_strarr(arr_uniq, " >>> ");
 
-    // int **arr_len = mx_matrix_adjacency(arr, isl_count);
-    // for (int i = 0; i < isl_count; i++) {
-    //     for (int j = 0; j < isl_count; j++)
-    //         printf("arr_len[%d][%d] = %d\n", i, j, arr_len[i][j]);
-    // }
+    int **arr_len = mx_matrix_adjacency(arr, isl_count);
+    for (int i = 0; i < isl_count; i++) {
+        for (int j = 0; j < isl_count; j++)
+            printf("arr_len[%d][%d] = %d\n", i, j, arr_len[i][j]);
+    }
 
     mx_strdel(tmp);//del array of string
     return arr;

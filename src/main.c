@@ -3,7 +3,7 @@
 int main(int argc, char **argv) {
     char **arr = NULL;
     char *string = NULL;
-    int isl_count;
+    int isl_count = 0;
 
     if(argc != 2) {
         mx_printerr("usage: ./pathfinder [filename]\n");
