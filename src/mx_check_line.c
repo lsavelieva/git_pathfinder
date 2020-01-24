@@ -60,14 +60,14 @@ static void check_next(char *s, int line_nbr) {
     mx_printstr("\x1b[33mRESULT OF MX_CHECK_LINE\033[0m \n");
 }
 
-int mx_check_line(const char *file) {
-    char *str;
+int mx_check_line(char *str) {
+    // char *str;
     int fl;
     int line_nbr = 1;
     int n;
     int end;
 
-    str = mx_file_to_str(file);
+    // str = mx_file_to_str(file);
     end = mx_strlen(str);
     n = mx_get_char_index(str, '\n');
     fl = mx_check_digit(str, n, line_nbr);

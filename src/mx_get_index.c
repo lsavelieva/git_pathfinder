@@ -1,6 +1,6 @@
 #include "../inc/pathfinder.h"
 
-int get_index(char *s, char c1, char c2) {
+int mx_get_index(char *s, char c1, char c2) {
     int index;
 
     index = mx_get_char_index(s, c1);

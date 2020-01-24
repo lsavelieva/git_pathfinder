@@ -2,6 +2,8 @@
 
 int main(int argc, char **argv) {
     char **arr = NULL;
+    char *string = NULL;
+    int isl_count;
 
     if(argc != 2) {
         mx_printerr("usage: ./pathfinder [filename]\n");
@@ -9,16 +11,14 @@ int main(int argc, char **argv) {
     }
     if (mx_err_handling(argv[1]) < 0)
         return 0;
-    mx_check_line(argv[1]);
+    string = mx_file_content(argv[1]);
+    mx_check_line(string);
+    isl_count = mx_first_line(string);
     mx_printstr("=== i am valid :) ===\n=== go to check_unique_island! ===\n");
-    arr = mx_get_strarr(argv[1]);
+
+    arr = mx_get_strarr(string, isl_count);
     mx_print_strarr(arr, " ; ");
     // int f = mx_get_arr_size(arr); printf("%d\n", f);
-
-
-
-
-
 
 
 

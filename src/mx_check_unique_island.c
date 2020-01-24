@@ -64,19 +64,3 @@ char **mx_arr_of_isl(char **arr, int count, int isl_count){
 //         } mx_printstr("\x1b[32mOK FOR CHECK_UNIQUE_ISLANDS\033[0m \n");
 // }
 
-
-
-// ====================================================================
-/* function that return sum of unique islands from first line of file*/
-// static int first_line(const char *file) {
-//     char *tempstr = mx_file_to_str(file);
-//     char *ps;
-//     size_t n;
-//     int isl_count;
-
-//     n = mx_get_char_index(tempstr, '\n');
-//     ps = mx_strndup(tempstr, n);
-//     isl_count = mx_atoi(ps);
-//     mx_strdel(&tempstr);
-//     return isl_count;
-// }

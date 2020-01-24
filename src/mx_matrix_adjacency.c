@@ -1,4 +1,22 @@
 #include "../inc/pathfinder.h"
 
-static char mx_matrix_adjacency() {
+int mx_matrix_adjacency(char **mdata, int size) {
+    int **mad = (int**)malloc(size * size * sizeof(int*));
+    int i;
+    int j;
+    int k = 0;
+
+    for (i = 0; i < size; i++)
+        mad[i][i] = 0;
+    for (i = 0; i < size; i++) {
+        for (j = 0; j < size; j++)
+            mad[i][j] = MX_INF;
+    }
+    for (i = 0; i < size; i++) {
+        for (j = 0; j < size; j++) {
+            mad[i][j] = mad[j][i] = mdata[k];
+            k += 3;
+        }
+    }
+    return **mad;
 }
