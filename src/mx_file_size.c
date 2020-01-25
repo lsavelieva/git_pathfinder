@@ -25,7 +25,7 @@ int mx_first_line(char *tempstr) {
     n = mx_get_char_index(tempstr, '\n');
     ps = mx_strndup(tempstr, n);
     isl_count = mx_atoi(ps);
-    // mx_strdel(&tempstr);
+    // mx_strdel(&ps);
     return isl_count;
 }
 
