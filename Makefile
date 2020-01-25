@@ -20,6 +20,7 @@ SRC = main.c \
 	mx_pf_count_word.c \
 	mx_check_unique_island.c \
 	mx_del_intarr.c \
+	mx_print_intarr.c \
 	mx_matrix_adjacency.c \
 
 SRCS = $(addprefix src/, $(SRC))

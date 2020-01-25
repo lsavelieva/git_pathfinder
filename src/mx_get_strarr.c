@@ -17,30 +17,24 @@ char **mx_matrix_split(char **arr, int count){
     return res;
 }
 
-/* function for move file in array of data */
+/* function for move file in arrays of data */
 char **mx_get_strarr(char *s, int isl_count) {
-    // char *s = mx_file_to_str(file);
     char **tmp;
     char **arr;
-    // int isl_count;
     char **arr_uniq;
     int arr_size;
+    int **arr_len;
 
     tmp = mx_strsplit(s, '\n');//get array of string
     arr_size = mx_get_arr_size(tmp);//get N of the strings
-            // isl_count = mx_atoi(tmp[0]);//get M of the unique islands
     arr = mx_matrix_split(tmp, arr_size);//get unique elements
-
     arr_uniq = mx_arr_of_isl(arr, arr_size, isl_count);
-    mx_print_strarr(arr_uniq, " >>> ");
+    arr_len = mx_matrix_adjacency(arr, arr_uniq, isl_count);
+    mx_print_intarr(arr_len, isl_count);
 
-    int **arr_len = mx_matrix_adjacency(arr, isl_count);
-    for (int i = 0; i < isl_count; i++) {
-        for (int j = 0; j < isl_count; j++)
-            printf("arr_len[%d][%d] = %d\n", i, j, arr_len[i][j]);
-    }
-
-    mx_strdel(tmp);//del array of string
+    // mx_strdel(tmp);//del array of string
+    mx_del_strarr(&tmp);
+    mx_del_intarr(arr_len, isl_count);
     return arr;
 }
 

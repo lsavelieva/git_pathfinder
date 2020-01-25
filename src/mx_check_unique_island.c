@@ -1,23 +1,5 @@
 #include "../inc/pathfinder.h"
 
-static void sum_of_isl(char **arr, int isl_count);
-// static int first_line(const char *file);
-
-/* function that return only islands */
-char **mx_arr_of_isl(char **arr, int count, int isl_count){
-    char **isl_arr = malloc(sizeof(char*) * ((count - 1) * 2 + 1));
-    int i;
-    int j;
-
-    for (i = 0, j = 0; i < (count - 1) * 3; i += 3, j += 2) {
-        isl_arr[j] = strdup(arr[i]);
-        isl_arr[j + 1] = strdup(arr[i + 1]);
-    }
-    isl_arr[(count - 1) * 2] = NULL;
-    sum_of_isl(isl_arr, isl_count);
-    return isl_arr;
-}
-
 /* function to check summary number of unique islands
    and return array of unique islands  */
  static void sum_of_isl(char **arr, int isl_count){
@@ -43,6 +25,21 @@ char **mx_arr_of_isl(char **arr, int count, int isl_count){
         } mx_printstr("\x1b[32mOK FOR CHECK_UNIQUE_ISLANDS\033[0m \n");
 }
 
+/* function that return only islands */
+char **mx_arr_of_isl(char **arr, int count, int isl_count){
+    char **isl_arr = malloc(sizeof(char*) * ((count - 1) * 2 + 1));
+    int i;
+    int j;
+
+    for (i = 0, j = 0; i < (count - 1) * 3; i += 3, j += 2) {
+        isl_arr[j] = strdup(arr[i]);
+        isl_arr[j + 1] = strdup(arr[i + 1]);
+    }
+    isl_arr[(count - 1) * 2] = NULL;
+    sum_of_isl(isl_arr, isl_count);
+    return isl_arr;
+}
+
 /* function to only check summary number of unique islands */
 //  static void sum_of_isl(char **arr, int isl_count){
 //     int count = 0; //value of unique islands in file
@@ -63,4 +60,3 @@ char **mx_arr_of_isl(char **arr, int count, int isl_count){
 //         mx_error_invalid_number();
 //         } mx_printstr("\x1b[32mOK FOR CHECK_UNIQUE_ISLANDS\033[0m \n");
 // }
-
