@@ -29,6 +29,5 @@ int **mx_matrix_adjacency(char **data, char **uniq, int size) {
         }
     }
     get_dist(mad, data, uniq, size);
-    mx_print_intarr(mad, size);
     return mad;
 }
