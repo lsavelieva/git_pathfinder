@@ -39,3 +39,8 @@ void mx_error_invalid_number(){
     mx_printerr("error: invalid number of islands\n");
     exit(-1);
 }
+
+void mx_error_filename(){
+    mx_printerr("usage: ./pathfinder [filename]\n");
+    exit(-1);
+}
