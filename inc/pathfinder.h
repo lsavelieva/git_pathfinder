@@ -32,6 +32,8 @@ int mx_pf_count_word(char *s, const char *delim);
 void mx_del_intarr(int **arr, int size);
 void mx_print_intarr(int **arr, int size);
 int mx_get_index_uniq(char *vertex, char **uniq);
+void mx_printline(const char c, int num);
+void mx_output();
 
 
 //Basic functions
@@ -41,5 +43,6 @@ char **mx_get_strarr(char *s, int isl_count);
 char **mx_matrix_split(char **arr, int count);
 char **mx_arr_of_isl(char **arr, int count, int isl_count);
 int **mx_matrix_adjacency(char **data, char **uniq, int size);
+void mx_floyd_algo(int **mad, int size);
 
 #endif

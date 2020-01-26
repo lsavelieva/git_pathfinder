@@ -22,6 +22,8 @@ SRC = main.c \
 	mx_del_intarr.c \
 	mx_print_intarr.c \
 	mx_matrix_adjacency.c \
+	mx_floyd_algo.c \
+	mx_output.c
 
 SRCS = $(addprefix src/, $(SRC))
 

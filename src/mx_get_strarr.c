@@ -30,7 +30,11 @@ char **mx_get_strarr(char *s, int isl_count) {
     arr = mx_matrix_split(tmp, arr_size);//get unique elements
     arr_uniq = mx_arr_of_isl(arr, arr_size, isl_count);
     arr_len = mx_matrix_adjacency(arr, arr_uniq, isl_count);
-    mx_print_intarr(arr_len, isl_count);
+    // mx_print_intarr(arr_len, isl_count);
+
+mx_printline('&', 100);
+mx_floyd_algo(arr_len, isl_count);
+mx_print_intarr(arr_len, isl_count);
 
     // mx_strdel(tmp);//del array of string
     mx_del_strarr(&tmp);
