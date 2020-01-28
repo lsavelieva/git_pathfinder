@@ -16,12 +16,9 @@ int main(int argc, char **argv) {
     string = mx_file_content(argv[1]);
     mx_check_line(string);
     isl_count = mx_first_line(string);
-    mx_printstr("=== i am valid :) ===\n=== go to check unique! ===\n");
 
     arr = mx_get_strarr(string, isl_count);
     mx_print_strarr(arr, " | ");
-
-    mx_printstr("=== i find matrix adjacency :) ===\n=== go to work with algorythm ===\n");
 
 
 
@@ -30,10 +27,9 @@ int main(int argc, char **argv) {
 // free all unused arrays
 // ===================================================================
     mx_del_strarr(&arr);
-    mx_strdel(&string);
+    // mx_strdel(&string);
     // mx_del_intarr(arr_len, isl_count);
 
-    mx_printstr("=== i clean memory :) end work  ===\n");
     mx_printstr("\x1b[32mOK FOR PATHFINDER\033[0m \n");
 
     system("leaks -q pathfinder");

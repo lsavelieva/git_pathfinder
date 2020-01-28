@@ -21,20 +21,23 @@ char **mx_matrix_split(char **arr, int count){
 char **mx_get_strarr(char *s, int isl_count) {
     char **tmp;
     char **arr;
-    char **arr_uniq;
+    char **uniq;
     int arr_size;
     int **arr_len;
+    int **mroute;
 
     tmp = mx_strsplit(s, '\n');//get array of string
     arr_size = mx_get_arr_size(tmp);//get N of the strings
     arr = mx_matrix_split(tmp, arr_size);//get unique elements
-    arr_uniq = mx_arr_of_isl(arr, arr_size, isl_count);
-    arr_len = mx_matrix_adjacency(arr, arr_uniq, isl_count);
-    // mx_print_intarr(arr_len, isl_count);
+    uniq = mx_arr_of_isl(arr, arr_size, isl_count);
+    arr_len = mx_matrix_adjacency(arr, uniq, isl_count);
+    mx_print_intarr(arr_len, isl_count);
 
 mx_printline('&', 100);
-mx_floyd_algo(arr_len, isl_count);
-mx_print_intarr(arr_len, isl_count);
+mroute = mx_copy_int_arr(arr_len, isl_count);mx_print_intarr(mroute, isl_count);
+mx_printline('&', 100);
+mx_floyd_algo(mroute, isl_count);
+mx_print_intarr(mroute, isl_count);
 
     // mx_strdel(tmp);//del array of string
     mx_del_strarr(&tmp);
