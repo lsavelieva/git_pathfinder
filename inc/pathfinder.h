@@ -1,7 +1,10 @@
 #ifndef PATHFINDER_H
 #define PATHFINDER_H
 
-#define MX_INF 2147483647
+#define MX_INF 21474836
+#define PATH "Path: "
+#define ROUTE "Route: "
+#define DISTANCE "Distance: "
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -13,6 +16,20 @@
 #include <fcntl.h>
 #include <errno.h>
 #include "../libmx/inc/libmx.h"
+
+//declaration
+typedef struct s_matrix {
+    char **uniq;//array of unique islands
+    int **mad;//matrix_adjacency
+    int **route;//matrix of routes
+    int isl_count;//number of islands
+}; t_matrix
+
+typedef struct s_path {
+    int size;//lengh of the route, always 1
+    int isl_count;//number of islands
+    int **arr path;//array of writen routes
+}; t_path
 
 //Error function
 void mx_printerr(const char *s);

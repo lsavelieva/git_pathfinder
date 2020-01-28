@@ -9,3 +9,9 @@ void mx_print_intarr(int **arr, int size) {
     mx_printchar('\n');
     }
 }
+
+void mx_printline(const char c, int num) {
+    for (int i = 0; i < num; i++)
+        mx_printchar(c);
+    mx_printchar('\n');
+}
