@@ -1,6 +1,10 @@
 #include "../inc/pathfinder.h"
 
-
+void mx_printline(const char c, int num) {
+    for (int i = 0; i < num; i++)
+        mx_printchar(c);
+    mx_printchar('\n');
+}
 
 //псевдокод - скелет вывода
 

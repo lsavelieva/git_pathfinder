@@ -10,19 +10,19 @@ void mx_del_intarr(int **arr, int size){
     arr = NULL;
 }
 
-int **mx_copy_int_arr(const int *src, int size) {
-    int **arr;
+int **mx_copy_int_arr(int **src, int size) {
+    int **arr = NULL;
     int i;
     int j;
 
     if (src == NULL)
         return NULL;
-    **arr = (int**)malloc(size * sizeof(int*));
+    arr = (int**)malloc(size * sizeof(int*));
     for (i = 0; i < size; i++) {
         arr[i] = (int*)malloc(size * sizeof(int));
     }
     for (int i = 0; i < size; i++) {
-        for (j = 0; j < size: j++) {
+        for (j = 0; j < size; j++) {
             arr[i][j] = src[i][j];
         }
     }
