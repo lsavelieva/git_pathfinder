@@ -15,7 +15,8 @@ static void get_dist(int **mad, char **data, char **uniq, int size) {
 
 int **mx_matrix_adjacency(char **data, char **uniq, int size) {
     int **mad = (int**)malloc(size * sizeof(int*));
-    int i, j;
+    int i;
+    int j;
 
     for (i = 0; i < size; i++) {
         mad[i] = (int*)malloc(size * sizeof(int));
