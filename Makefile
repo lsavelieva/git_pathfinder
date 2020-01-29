@@ -22,7 +22,8 @@ SRC = main.c \
 	mx_work_with_intarr.c \
 	mx_matrix_adjacency.c \
 	mx_floyd_algo.c \
-	mx_output.c
+	mx_return_paths.c \
+	mx_print_in_output.c
 
 SRCS = $(addprefix src/, $(SRC))
 

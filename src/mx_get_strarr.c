@@ -24,7 +24,7 @@ char **mx_get_strarr(char *s, int isl_count) {
     char **uniq;
     int arr_size;
     int **arr_len;
-    int **mroute;
+    t_matrix **mroute;
 
     tmp = mx_strsplit(s, '\n');//get array of string
     arr_size = mx_get_arr_size(tmp);//get N of the strings

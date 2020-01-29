@@ -31,7 +31,6 @@ int main(int argc, char **argv) {
     // mx_del_intarr(arr_len, isl_count);
 
     mx_printstr("\x1b[32mOK FOR PATHFINDER\033[0m \n");
-
     system("leaks -q pathfinder");
     return 0;
 }
