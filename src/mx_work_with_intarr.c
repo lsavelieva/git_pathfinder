@@ -1,5 +1,14 @@
 #include "../inc/pathfinder.h"
 
+int *mx_create_intarr(int size){
+    int *arr = (int*)malloc(size * sizeof(int));
+
+    for (int i = 0; i < size; i++) {
+        arr[i] = 0;
+    }
+    return arr;
+}
+
 void mx_del_intarr(int **arr, int size){
     int i = -1;
 
